@@ -33,11 +33,11 @@ phases:
   post_build:
     commands:
       - docker push $REPOSITORY_URI:$TAG
-      - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --role-arn $EKS_KUBECTL_ROLE_ARN
+      - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --role-arn arn:aws:sts::729657062138:assumed-role/udacitys-stack2-CodeBuildServiceRole-1XBA3T5BJ2RWN/AWSCodeBuild-1c8ababa-f385-4254-a358-685050c61082
       - aws sts get-caller-identity
       - echo $EKS_KUBECTL_ROLE_ARN
       - ls
-#       - kubectl apply -f simple_jwt_api.yml 
+      - kubectl apply -f simple_jwt_api.yml 
       - printf '[{"name":"simple_jwt_api","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
 artifacts:
   files: build.json
