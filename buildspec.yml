@@ -35,6 +35,7 @@ phases:
     commands:
       - docker push $REPOSITORY_URI:$TAG
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --role-arn $EKS_KUBECTL_ROLE_ARN
+      - kubectl -get-token
       - kubectl config view
       - which kubectl
       - kubectl apply -f simple_jwt_api.yml 
