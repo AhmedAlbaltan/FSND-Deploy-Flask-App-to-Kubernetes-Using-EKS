@@ -35,7 +35,7 @@ phases:
     commands:
       - docker push $REPOSITORY_URI:$TAG
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --role-arn $EKS_KUBECTL_ROLE_ARN
-      - kubectl edit -n kube-system configmap/aws-auth
+      - kubectl auth reconcile -f aws-auth-patch.yaml
       - kubectl config view
       - kubectl patch configmap/aws-auth -n kube-system --patch "$(cat aws-auth-patch.yml)"
       - kubectl apply -f simple_jwt_api.yml 
