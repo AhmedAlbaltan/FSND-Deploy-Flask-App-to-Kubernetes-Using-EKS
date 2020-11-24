@@ -12,6 +12,8 @@ The Flask app that will be used for this project consists of a simple API with t
 
 The app relies on a secret set as the environment variable `JWT_SECRET` to produce a JWT. The built-in Flask server is adequate for local development, but not production, so you will be using the production-ready [Gunicorn](https://gunicorn.org/) server when deploying the app.
 
+http://a5c588728c76a42b9af1c40b624d35ab-593660063.eu-west-2.elb.amazonaws.com:5000/
+
 ## Initial setup
 1. Fork this project to your Github account.
 2. Locally clone your forked version to begin working on the project.
