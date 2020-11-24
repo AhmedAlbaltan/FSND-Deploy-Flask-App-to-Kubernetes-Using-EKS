@@ -36,9 +36,9 @@ phases:
       - docker push $REPOSITORY_URI:$TAG
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --role-arn $EKS_KUBECTL_ROLE_ARN
       - aws sts get-caller-identity
-      - export AWS_ACCESS_KEY_ID=KEY
-      - export AWS_SECRET_ACCESS_KEY=SECRET-KEY
-      - aws-iam-authenticator token -i simple-jwt-api2
+#       - export AWS_ACCESS_KEY_ID=KEY
+#       - export AWS_SECRET_ACCESS_KEY=SECRET-KEY
+#       - aws-iam-authenticator token -i simple-jwt-api2
 #       - kubectl describe configmap -n kube-system aws-auth
       - kubectl apply -f simple_jwt_api.yml 
       - printf '[{"name":"simple_jwt_api","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
